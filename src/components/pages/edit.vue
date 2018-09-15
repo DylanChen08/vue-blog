@@ -1,5 +1,5 @@
 <template>
-    <div><span>edit</span></div>
+    <div id="edit"><span>edit</span></div>
 </template>
 
 <script>

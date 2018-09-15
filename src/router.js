@@ -38,12 +38,12 @@ export default new Router({
       component: () => import(/* webpackChunkName: "about" */ './components/pages/create')
     },
     {
-      path: '/pages/details',
+      path: '/pages/blog-details',
       name: 'details',
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './components/pages/details')
+      component: () => import(/* webpackChunkName: "about" */ './components/pages/blog-details')
     },
     {
       path: '/pages/edit',
