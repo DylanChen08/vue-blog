@@ -1,7 +1,7 @@
 import axios from 'axios'
 import {Message} from 'element-ui'
 
-axios.defaults.baseURL = 'https://api.example.com';
+axios.defaults.baseURL = ' http://blog-server.hunger-valley.com';
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 /*
@@ -10,25 +10,33 @@ axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded
 * 可以直接在控制台模拟请求
 *
 * */
-export default function request(url, type = "get", data = {}) {
+export default function request(url, type = "GET", data = {}) {
     return new Promise((resolve, reject) => {
         let option = {
             url,
             type
         }
+        console.log(option)
         if (type.toLowerCase() === "get") {
+            console.log(0)
             option.params = data
         } else {
+            console.log(1)
             option.data = data
         }
         axios(option).then(res => {
+            console.log(2)
+            console.log(res)
             if (res.data === 'ok') {
+                console.log(3)
                 resolve(res.data)
             } else {
+                console.log(4)
                 Message.error(res.data)
                 reject(res.data)
             }
-        }).catch(err => {
+        }).catch(e => {
+            console.log(e)
             Message.error("网络异常")
             reject({msg: "网络异常"})
         })
