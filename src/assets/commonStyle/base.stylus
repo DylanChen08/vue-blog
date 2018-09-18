@@ -41,8 +41,9 @@ html, body, #app
   justify-content center
   align-items center
   height 100px
-  background #D2D2D2
+  background #F0F0F0
   text-align center
   p
+    color #888
     display inline-block
     border 1px solid red

@@ -1,6 +1,6 @@
 <template>
     <div id="footer">
-        <p>Power by Ease lalalalla</p>
+        <p>Power by Ease </p>
     </div>
 </template>
 
