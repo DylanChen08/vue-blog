@@ -1,0 +1,15 @@
+$themeColor = #409eff
+$themeTextColor = #333
+
+
+
+.el-button
+  font-size 13px
+  color #006600
+  height 28px
+  line-height 28px
+  padding 0 8px
+  border-radius 4px
+  font-weight normal
+  border none
+

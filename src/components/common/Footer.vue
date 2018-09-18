@@ -1,6 +1,6 @@
 <template>
     <div id="footer">
-        <span>Power by Ease</span>
+        <p>Power by Ease lalalalla</p>
     </div>
 </template>
 
@@ -10,6 +10,6 @@
     }
 </script>
 
-<style scoped>
+<style lang="stylus" scoped>
 
 </style>

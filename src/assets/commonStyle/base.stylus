@@ -1,0 +1,48 @@
+*
+  margin 0
+  padding 0
+  box-sizing border-box
+
+ul, ol
+  list-style none
+
+a
+  text-decoration none
+
+html, body, #app
+  height: 100vh
+
+#app {
+  display grid
+  grid-template-columns 12% auto 12%
+  grid-template-rows auto 1fr auto
+  grid-template-areas "header header header"\
+  ".      main  ."\
+  "footer footer footer"
+  border 1px solid red
+}
+
+#header
+  grid-area header
+  border 1px solid red
+  display flex
+  flex-direction column
+  justify-content center
+  align-items center
+
+#main
+  grid-area main
+  border 1px solid green
+
+#footer
+  grid-area footer
+  border 1px solid red
+  display flex
+  justify-content center
+  align-items center
+  height 100px
+  background #D2D2D2
+  text-align center
+  p
+    display inline-block
+    border 1px solid red
