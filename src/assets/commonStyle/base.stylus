@@ -1,3 +1,6 @@
+$themeColor = #409eff
+$themeTextColor = #333
+
 *
   margin 0
   padding 0
@@ -22,13 +25,48 @@ html, body, #app
   border 1px solid red
 }
 
-#header
+/*登录之后header的样式*/
+header.login
+  grid-area header
+  border 1px solid red
+  height 100px
+  width 100%
+  display flex
+  align-items center
+  background $themeColor
+  h1
+    border 1px solid green
+    flex 1
+    margin 10px 0
+    text-transform uppercase
+    color #ffffff
+  img.avatar
+    width 40px
+    height 40px
+    border-radius 50%
+    margin-left 20px
+
+
+
+/*未登录的header的样式*/
+
+header.no-login
   grid-area header
   border 1px solid red
   display flex
   flex-direction column
   justify-content center
   align-items center
+  background $themeColor
+  h1
+    margin 10px 0
+    text-transform uppercase
+    color #ffffff
+  span
+    margin 5px 0 10px
+    color $themeTextColor
+  section
+    margin 10px 0
 
 #main
   grid-area main
@@ -46,4 +84,3 @@ html, body, #app
   p
     color #888
     display inline-block
-    border 1px solid red
