@@ -24,6 +24,4 @@
 <style lang="stylus">
     /*引入css基础库*/
     @import "./assets/commonStyle/base.stylus"
-    /*引入公共样式*/
-    @import "./assets/commonStyle/common.stylus"
 </style>

@@ -12,6 +12,7 @@ export default new Router({
             path: '/',
             name: 'home',
             component: Home
+            /*这种写法要从上面import*/
         },
         {
             path: '/about',
@@ -20,6 +21,7 @@ export default new Router({
             // this generates a separate chunk (about.[hash].js) for this route
             // which is lazy-loaded when the route is visited.
             component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+            /*或者在这里导入，上面不用import*/
         },
         {
             path: '/pages/index',

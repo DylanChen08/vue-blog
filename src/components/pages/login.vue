@@ -34,7 +34,6 @@
 
 <style lang="stylus" scoped>
     @import "../../assets/commonStyle/base.stylus"
-    @import "../../assets/commonStyle/common.stylus"
 
     #login > *, #register > *
         margin 5px 0
