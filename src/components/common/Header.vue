@@ -2,11 +2,11 @@
     <header :class="{'login':isLogin,'no-login':!isLogin}">
         <!--未登录状态header-->
         <template v-if="!isLogin">
-            <h1>let`s share</h1>
-            <span>精品博客汇聚</span>
+            <h1>Blog Sharer</h1>
+            <span>分享精品博客</span>
             <section>
-                <el-button plain @click="test">朴素按钮</el-button>
-                <el-button plain>朴素按钮</el-button>
+                <el-button plain>立即登录</el-button>
+                <el-button plain>注册账号</el-button>
             </section>
         </template>
         <!--登录状态header-->
@@ -20,8 +20,6 @@
 
 
 <script>
-
-
     export default {
         name: "Header",
         data() {
@@ -29,11 +27,7 @@
                 isLogin: false
             }
         },
-        methods: {
-            test() {
-                alert(1)
-            }
-        }
+        methods: {}
     }
 </script>
 

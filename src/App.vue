@@ -1,8 +1,12 @@
 <template>
     <div id="app">
         <Header></Header>
-        <main id="main">8888</main>
+        <main id="main">
+            <!--主题部分显示内容，通过router控制-->
+            <router-view></router-view>
+        </main>
         <Footer></Footer>
+
     </div>
 </template>
 <script>

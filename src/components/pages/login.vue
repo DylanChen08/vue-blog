@@ -1,10 +1,13 @@
 <template>
-    <div>
-        <span>登录</span>
-        <span class="demonstration">自定义初始值</span>
-        <el-slider v-model="value2" @change="log" :show-tooltip="true"></el-slider>
+    <div id="login">
+        <h4>用户名</h4>
+        <el-input v-model="username" placeholder="用户名"></el-input>
+        <p class="error">该用户名已经注册过</p>
+        <el-input v-model="password" placeholder="输入密码"></el-input>
+        <p class="error">该用户名已经注册过</p>
+        <el-button type="primary" plain>主要按钮</el-button>
+        <p class="notice">没有账号？<router-link to="/pages/register">注册新用户</router-link></p>
     </div>
-
 </template>
 
 <script>
@@ -18,22 +21,14 @@
         name: "login",
         data() {
             return {
-                value2: 50
+                username: 'ease',
+                password: ""
             }
         },
-        methods: {
-            formatTooltip(val) {
-                return val / 100;
-            },
-            log() {
-                console.log(this.value2)
-            }
-        }
+        methods: {}
     }
 </script>
 
 <style lang="stylus" scoped>
-    div
-        width 60%;
-        margin 0 auto
+
 </style>
