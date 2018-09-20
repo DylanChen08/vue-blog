@@ -1,8 +1,9 @@
 <template>
     <div id="edit">
-        <h1>创建文章</h1>
+        <h1>编辑文章</h1>
         <h3>文章标题</h3>
         <el-input v-model="articleTitle" placeholder="请输入文章标题"></el-input>
+        <p class="msg">限30个字</p>
         <h3>内容简介</h3>
         <el-input
                 type="textarea"
@@ -10,6 +11,7 @@
                 placeholder="请输入内容简介"
                 v-model="articleSummary">
         </el-input>
+        <p class="msg">限30个字</p>
         <h3>文章内容</h3>
         <el-input
                 type="textarea"
@@ -17,6 +19,8 @@
                 placeholder="请输入内容"
                 v-model="articleContent">
         </el-input>
+
+        <el-button type="primary" plain>提交更改</el-button>
     </div>
 </template>
 
@@ -28,7 +32,6 @@
                 articleTitle:'',
                 articleSummary:'',
                 articleContent:'',
-                textarea:''
             }
         }
     }
@@ -36,6 +39,7 @@
 
 <style lang="stylus" scoped>
    @import "../../assets/commonStyle/base.stylus"
+
    #edit > *
         margin 5px 0
     #edit
@@ -46,4 +50,6 @@
             font-weight 500
         .el-input
             width 600px
+        p.msg
+            color $themeWarningTextColor
 </style>

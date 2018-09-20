@@ -1,6 +1,7 @@
 $themeColor = #409eff
 $themeTextColor = #333
-$themeWarningTextColor = #c62f2f
+$themeWarningTextColor = #DB9F22
+$themeDangerTextColor = #C01F32
 
 @import "./common.stylus"
 
