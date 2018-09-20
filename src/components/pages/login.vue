@@ -3,10 +3,13 @@
         <h4>用户名</h4>
         <el-input v-model="username" placeholder="用户名"></el-input>
         <p class="error">该用户名已经注册过</p>
+        <h4>密码</h4>
         <el-input v-model="password" placeholder="输入密码"></el-input>
         <p class="error">该用户名已经注册过</p>
-        <el-button type="primary" plain>主要按钮</el-button>
-        <p class="notice">没有账号？<router-link to="/pages/register">注册新用户</router-link></p>
+        <el-button type="primary" plain>登录</el-button>
+        <p class="notice">没有账号？
+            <router-link to="/pages/register">注册新用户</router-link>
+        </p>
     </div>
 </template>
 
@@ -21,7 +24,7 @@
         name: "login",
         data() {
             return {
-                username: 'ease',
+                username: '',
                 password: ""
             }
         },
@@ -30,5 +33,23 @@
 </script>
 
 <style lang="stylus" scoped>
+    @import "../../assets/commonStyle/base.stylus"
+    @import "../../assets/commonStyle/common.stylus"
 
+    #login > *, #register > *
+        margin 5px 0
+
+    #login, #register
+        display grid
+        justify-content center
+        h4
+            font-weight 500
+        .el-input
+            width 100%
+            margin 0 auto
+        p.error
+            color $themeWarningTextColor
+            font-size 12px
+        .notice
+            font-size 12px
 </style>

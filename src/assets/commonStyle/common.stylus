@@ -1,6 +1,6 @@
 
 .el-button
-  font-size 13px
+  font-size 16px
   color #006600
   padding 14px 0
   line-height 28px

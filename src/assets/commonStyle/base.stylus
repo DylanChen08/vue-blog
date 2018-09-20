@@ -1,5 +1,6 @@
 $themeColor = #409eff
 $themeTextColor = #333
+$themeWarningTextColor = #c62f2f
 
 *
   margin 0
