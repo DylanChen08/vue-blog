@@ -13,7 +13,14 @@
         <template v-if="isLogin">
             <h1>let`s share</h1>
             <i class="el-icon-plus"></i>
-            <img class="avatar" src="http://cn.gravatar.com/avatar/1?s=128&d=identicon" alt="">
+            <div class="user-avatar">
+                <img class="avatar" src="http://cn.gravatar.com/avatar/1?s=128&d=identicon" alt="">
+                <ul>
+                    <li><a href="">我的</a></li>
+                    <li><a href="">注销</a></li>
+                </ul>
+            </div>
+
         </template>
     </header>
 </template>
