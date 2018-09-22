@@ -21,6 +21,7 @@ const actions = {
             commit("setLogin", {isLogin: true})
         })
     },
+    //async await 写法
     async logOut({commit}) {
         await auth.logOut()
         commit("setUser", null)
@@ -37,6 +38,7 @@ const actions = {
         commit("setLogin", {isLogin: res.isLogin})
         if (!state.isLogin) return false
         commit("setUser", {user: res.user})
+        return true
     }
 }
 
