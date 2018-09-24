@@ -15,6 +15,10 @@ ul, ol
 
 a
   text-decoration none
+  color $themeTextColor
+  cursor pointer
+  &:hover
+    color: $themeDangerTextColor
 
 html, body, #app
   height: 100vh
@@ -32,6 +36,7 @@ html, body, #app
 /*登录之后header的样式*/
 header.login
   grid-area header
+  padding 0 12%
   border 1px solid red
   height 100px
   width 100%
@@ -46,17 +51,19 @@ header.login
     cursor pointer
   i
     cursor pointer
+
   div.user-avatar
-    margin-right 30px
-    display relative
-    //border 1px solid red
+    position relative
+
     ul
       display none
       position absolute
-      right 38px
+      z-index 1000
+      right 0
+      border 1px solid #ddd
       -webkit-box-shadow 0px 0px 25px -11px rgba(0, 0, 0, 0.75)
       -moz-box-shadow 0px 0px 25px -11px rgba(0, 0, 0, 0.75)
-      box-shadow0px 0px 25px -11px rgba(0, 0, 0, 0.75)
+      box-shadow 0px 0px 25px -11px rgba(0, 0, 0, 0.75)
 
       li
         background: #fff;

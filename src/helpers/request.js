@@ -16,26 +16,26 @@ export default function request(url, type = "GET", data = {}) {
             url,
             method:type
         }
-        console.log(option)
+        // console.log(option)
         if (type.toLowerCase() === "get") {
-            console.log(0)
+            // console.log(0)
             option.params = data
         } else {
-            console.log(1)
+            // console.log(1)
             option.data = data
         }
         axios(option).then(res => {
-            console.log(2)
+            // console.log(2)
             // console.log(res)
             if (res.data.status === 'ok') {
-                console.log(3)
+                // console.log(3)
                 resolve(res)
             } else {
-                console.log(4)
-                console.log(res)
-                console.log(5)
+                // console.log(4)
+                // console.log(res)
+                // console.log(5)
                 Message.error(res.data.msg)
-                console.log(6)
+                // console.log(6)
                 reject(res)
             }
         }).catch(e => {

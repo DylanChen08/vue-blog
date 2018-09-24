@@ -14,10 +14,12 @@
             <h1>let`s share</h1>
             <i class="el-icon-plus"></i>
             <div class="user-avatar">
-                <img class="avatar" src="http://cn.gravatar.com/avatar/1?s=128&d=identicon" alt="">
+                <img class="avatar" :src="user.avatar" :alt="user.name" :title="user.name"/>
                 <ul>
-                    <li><a href="">我的</a></li>
-                    <li><a href="">注销</a></li>
+                    <li>
+                        <router-link to="/pages/my-profiles">我的</router-link>
+                    </li>
+                    <li><a>注销</a></li>
                 </ul>
             </div>
 
@@ -27,14 +29,37 @@
 
 
 <script>
+    import auth from '../../api/auth'
+    import {mapActions, mapGetters} from 'vuex'
+
+    window.auth = auth
+
+
     export default {
         name: "Header",
         data() {
             return {
-                isLogin: false
             }
         },
-        methods: {}
+        computed: {
+            ...mapGetters([
+                'user',
+                'isLogin'
+            ]),
+
+
+        },
+
+        created() {
+            this.checkLogin()
+        },
+        methods: {
+            ...mapActions([
+                'checkLogin'
+            ])
+
+        },
+
     }
 </script>
 
