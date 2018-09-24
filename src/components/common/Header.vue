@@ -6,7 +6,7 @@
             <span>分享精品博客</span>
             <section>
                 <el-button plain>立即登录</el-button>
-                <el-button plain @click="test">注册账号</el-button>
+                <el-button plain>注册账号</el-button>
             </section>
         </template>
         <!--登录状态header-->
@@ -58,11 +58,7 @@
             ...mapActions([
                 'checkLogin'
             ]),
-            test(){
-                // console.log(this.isLogin)
-                this.checkLogin()
 
-            }
 
         },
 

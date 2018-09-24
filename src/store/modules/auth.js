@@ -50,7 +50,8 @@ const actions = {
         commit("setUser", {user: res.data})
         console.log(5)
         return true
-    }
+    },
+
 }
 
 export default {
