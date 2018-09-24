@@ -46,8 +46,6 @@
                 'user',
                 'isLogin'
             ]),
-
-
         },
 
         created() {

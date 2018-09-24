@@ -12,30 +12,34 @@ axios.defaults.withCredentials = true
 * */
 export default function request(url, type = "GET", data = {}) {
     return new Promise((resolve, reject) => {
-        let option = {
-            url,
-            method:type
+        let options = {
+            url:url,
+            method: type
         }
-        // console.log(option)
+        // console.log(-1)
+        console.log(options.url)
         if (type.toLowerCase() === "get") {
             // console.log(0)
-            option.params = data
+            options.params = data
+            // console.log(options.params)
+            // console.log(11)
         } else {
             // console.log(1)
-            option.data = data
+            options.data = data
+            // console.log("data",options.data)
         }
-        axios(option).then(res => {
-            // console.log(2)
-            // console.log(res)
+        console.log(88)
+        console.log(options)
+        console.log(1099)
+        axios(options).then(res => {
             if (res.data.status === 'ok') {
-                // console.log(3)
+                console.log(899)
                 resolve(res)
+                console.log(999)
+
             } else {
-                // console.log(4)
-                // console.log(res)
-                // console.log(5)
+                console.log(1098)
                 Message.error(res.data.msg)
-                // console.log(6)
                 reject(res)
             }
         }).catch(e => {

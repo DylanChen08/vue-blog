@@ -1,4 +1,4 @@
-import request from '@/helpers/request'
+import request from '../helpers/request'
 
 
 //登录登出相关的基础库
@@ -12,11 +12,11 @@ const URL = {
 
 export default{
 
-    register({name,password}){
-        return request(URL.REGISTER,'POST',{name,password})
+    register({username,password}){
+        return request(URL.REGISTER,'POST',{username,password})
     },
-    logIn({name,password}){
-        return request(URL.REGISTER,'POST',{name,password})
+    logIn({username,password}){
+        return request(URL.LOGIN,'POST',{username,password})
     },
     logOut(){
         return request(URL.LOGOUT)
