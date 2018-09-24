@@ -6,7 +6,7 @@
             <span>分享精品博客</span>
             <section>
                 <el-button plain>立即登录</el-button>
-                <el-button plain>注册账号</el-button>
+                <el-button plain @click="test">注册账号</el-button>
             </section>
         </template>
         <!--登录状态header-->
@@ -14,7 +14,7 @@
             <h1>let`s share</h1>
             <i class="el-icon-plus"></i>
             <div class="user-avatar">
-                <img class="avatar" :src="user.avatar" :alt="user.name" :title="user.name"/>
+                <img class="avatar" :src="user.avatar" :alt="user.username" :title="user.username"/>
                 <ul>
                     <li>
                         <router-link to="/pages/my-profiles">我的</router-link>
@@ -38,23 +38,31 @@
     export default {
         name: "Header",
         data() {
-            return {
-            }
+            return {}
         },
         computed: {
             ...mapGetters([
-                'user',
-                'isLogin'
+                'isLogin',
+                'user'
             ]),
+
         },
 
         created() {
+            // console.log(11022)
             this.checkLogin()
+            // console.log(1102222)
+
         },
         methods: {
             ...mapActions([
                 'checkLogin'
-            ])
+            ]),
+            test(){
+                // console.log(this.isLogin)
+                this.checkLogin()
+
+            }
 
         },
 
