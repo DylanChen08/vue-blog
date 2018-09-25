@@ -19,7 +19,7 @@
                     <li>
                         <router-link to="/pages/my-profiles">我的</router-link>
                     </li>
-                    <li><a>注销</a></li>
+                    <li><a @click="onLogOut">注销</a></li>
                 </ul>
             </div>
 
@@ -56,7 +56,9 @@
                 'checkLogin',
                 'logout'
             ]),
-
+            onLogOut(){
+                this.logout()
+            }
 
         },
 
