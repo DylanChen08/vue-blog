@@ -23,8 +23,9 @@ export default function request(url, type = "GET", data = {}) {
         }
 
         axios(options).then(res => {
+            console.log("res",res)
             if (res.data.status === 'ok') {
-                console.log("res",res)
+                resolve(res.data)
             } else {
                 reject(res)
             }

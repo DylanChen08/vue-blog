@@ -1,4 +1,4 @@
-import request from '@helpers/request'
+import request from '../helpers/request'
 
 //博客增删改查相关的基础库
 const URL = {

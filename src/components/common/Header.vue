@@ -49,14 +49,12 @@
         },
 
         created() {
-            // console.log(11022)
             this.checkLogin()
-            // console.log(1102222)
-
         },
         methods: {
             ...mapActions([
-                'checkLogin'
+                'checkLogin',
+                'logout'
             ]),
 
 
