@@ -21,8 +21,10 @@ const mutations = {
 }
 
 const actions = {
+    //action中的logIn
     logIn({commit}, {username, password}) {
-        return auth.login({username, password})
+        //调用api/auth中的logIn
+        return auth.logIn({username, password})
             .then(res => {
                 commit('setUser', {user: res.data})
                 commit('setLogin', {isLogin: true})

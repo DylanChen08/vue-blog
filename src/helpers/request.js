@@ -23,11 +23,13 @@ export default function request(url, type = "GET", data = {}) {
         }
 
         axios(options).then(res => {
-            console.log("res",res)
+            console.log(res)
             if (res.data.status === 'ok') {
                 resolve(res.data)
+                Message.success(res.data.msg)
             } else {
                 reject(res)
+                Message.error(res.data.msg)
             }
         }).catch(e => {
             console.log(e)

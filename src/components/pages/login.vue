@@ -4,9 +4,9 @@
         <el-input v-model="username" placeholder="用户名"></el-input>
         <p class="error">该用户名已经注册过</p>
         <h4>密码</h4>
-        <el-input v-model="password" placeholder="输入密码"></el-input>
+        <el-input v-model="password" placeholder="输入密码" @keyup.enter.native="onLogIn"></el-input>
         <p class="error">该用户名已经注册过</p>
-        <el-button type="primary" plain>登录</el-button>
+        <el-button type="primary" @click="onLogIn" plain>登录</el-button>
         <p class="notice">没有账号？
             <router-link to="/pages/register">注册新用户</router-link>
         </p>
@@ -16,6 +16,7 @@
 <script>
     import request from '../../helpers/request.js'
     import auth from '../../api/auth.js'
+    import {mapActions} from 'vuex'
 
 
     window.request = request;
@@ -25,10 +26,26 @@
         data() {
             return {
                 username: '',
-                password: ""
+                password: ''
             }
         },
-        methods: {}
+        methods: {
+            ...mapActions([
+                'logIn'
+            ]),
+            onLogIn() {
+                this.logIn(
+                    {
+                        username: this.username,
+                        password: this.password
+                    })
+                    .then(() => {
+
+                    }).catch(() => {
+
+                })
+            }
+        }
     }
 </script>
 

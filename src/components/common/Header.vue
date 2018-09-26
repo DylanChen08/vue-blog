@@ -5,8 +5,8 @@
             <h1>Blog Sharer</h1>
             <span>分享精品博客</span>
             <section>
-                <el-button plain>立即登录</el-button>
-                <el-button plain>注册账号</el-button>
+                <el-button plain><router-link to="/pages/login">立即登录</router-link></el-button>
+                <el-button plain><router-link to="/pages/register">注册账号</router-link></el-button>
             </section>
         </template>
         <!--登录状态header-->
