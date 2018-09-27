@@ -40,7 +40,7 @@
                         password: this.password
                     })
                     .then(() => {
-
+                        this.$router.push({path:'/'})
                     }).catch(() => {
 
                 })
