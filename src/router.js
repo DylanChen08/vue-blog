@@ -1,9 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import store from './store/modules/auth'
+
+//测试用的变量
+window.store = store;
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
     mode: 'history',
     base: process.env.BASE_URL,
     routes: [
@@ -36,10 +40,11 @@ export default new Router({
             // route level code-splitting
             // this generates a separate chunk (about.[hash].js) for this route
             // which is lazy-loaded when the route is visited.
-            component: () => import(/* webpackChunkName: "about" */ './components/pages/create')
+            component: () => import(/* webpackChunkName: "about" */ './components/pages/create'),
+            meta: {requiresAuth: true}
         },
         {
-            path: '/pages/blog-details',
+            path: '/pages/blog-details/:blogId',
             name: 'details',
             // route level code-splitting
             // this generates a separate chunk (about.[hash].js) for this route
@@ -47,12 +52,13 @@ export default new Router({
             component: () => import(/* webpackChunkName: "about" */ './components/pages/blog-details')
         },
         {
-            path: '/pages/edit',
+            path: '/pages/edit/:blogId',
             name: 'edit',
             // route level code-splitting
             // this generates a separate chunk (about.[hash].js) for this route
             // which is lazy-loaded when the route is visited.
-            component: () => import(/* webpackChunkName: "about" */ './components/pages/edit')
+            component: () => import(/* webpackChunkName: "about" */ './components/pages/edit'),
+            meta: {requiresAuth: true}
         },
         {
             path: '/pages/login',
@@ -71,7 +77,7 @@ export default new Router({
             component: () => import(/* webpackChunkName: "about" */ './components/pages/register')
         },
         {
-            path: '/pages/my-profiles',
+            path: '/pages/my-profiles/:blogId',
             name: 'my-profiles',
             // route level code-splitting
             // this generates a separate chunk (about.[hash].js) for this route
@@ -79,7 +85,7 @@ export default new Router({
             component: () => import(/* webpackChunkName: "about" */ './components/pages/my-profiles')
         },
         {
-            path: '/pages/user',
+            path: '/pages/user/:blogId',
             name: 'user',
             // route level code-splitting
             // this generates a separate chunk (about.[hash].js) for this route
@@ -88,3 +94,24 @@ export default new Router({
         }
     ]
 })
+
+
+router.beforeEach((to, from, next) => {
+    if (to.matched.some(record => record.meta.requiresAuth)) {
+        // this route requires auth, check if logged in
+        // if not, redirect to login page.
+        if (1) {
+            next({
+                path: '/login',
+                query: {redirect: to.fullPath}
+            })
+        } else {
+            next()
+        }
+    } else {
+        next() // make sure to always call next()!
+    }
+})
+
+
+export default router;
