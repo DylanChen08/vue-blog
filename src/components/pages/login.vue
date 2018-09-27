@@ -2,10 +2,8 @@
     <div id="login">
         <h4>用户名</h4>
         <el-input v-model="username" placeholder="用户名"></el-input>
-        <p class="error">该用户名已经注册过</p>
         <h4>密码</h4>
         <el-input v-model="password" placeholder="输入密码" @keyup.enter.native="onLogIn"></el-input>
-        <p class="error">该用户名已经注册过</p>
         <el-button type="primary" @click="onLogIn" plain>登录</el-button>
         <p class="notice">没有账号？
             <router-link to="/pages/register">注册新用户</router-link>
