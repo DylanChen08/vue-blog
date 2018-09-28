@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import store from './store/modules/auth'
+import storeInRouter from './store/index'
+import {Message} from 'element-ui'
 
 //测试用的变量
-window.store = store;
-
+window.storeInRouter = storeInRouter;
 Vue.use(Router)
 
 const router = new Router({
@@ -100,14 +100,19 @@ router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
         // this route requires auth, check if logged in
         // if not, redirect to login page.
-        if (1) {
-            next({
-                path: '/login',
-                query: {redirect: to.fullPath}
-            })
-        } else {
-            next()
-        }
+        storeInRouter.dispatch('checkLogin').then(isLogin => {
+            console.log(34)
+            console.log(isLogin)
+            if (!isLogin) {
+                Message.error("您还没登录")
+                next({
+                    path: '/pages/login',
+                    query: {redirect: to.fullPath}
+                })
+            } else {
+                next()
+            }
+        })
     } else {
         next() // make sure to always call next()!
     }

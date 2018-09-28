@@ -1,8 +1,8 @@
 import auth from '../../api/auth'
 
 const state = {
-    user: '',
-    isLogin: ''
+    user: null,
+    isLogin: false
 }
 
 const getters = {
@@ -50,6 +50,7 @@ const actions = {
         commit('setLogin', {isLogin: res.isLogin})
         if (!res.isLogin) return false
         commit('setUser', {user: res.data})
+        return true  //从后端获取信息后，如果是已经登录，则返回一个真值
     }
 }
 

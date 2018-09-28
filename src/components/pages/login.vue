@@ -38,7 +38,7 @@
                         password: this.password
                     })
                     .then(() => {
-                        this.$router.push({path:'/'})
+                        this.$router.push({path: this.$route.query.redirect || '/'})
                     }).catch(() => {
 
                 })
