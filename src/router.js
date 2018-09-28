@@ -17,6 +17,8 @@ const router = new Router({
         //     component: Home
         //     /*这种写法要从上面import*/
         // },
+
+        //路由的懒加载，按需加载
         {
             path: '/about',
             name: 'about',

@@ -7,7 +7,7 @@
         <h3>内容简介</h3>
         <el-input
                 type="textarea"
-                :rows="3"
+                :autosize="{ minRows: 2, maxRows: 4}"
                 placeholder="请输入内容简介"
                 v-model="articleSummary">
         </el-input>
@@ -15,11 +15,18 @@
         <h3>文章内容</h3>
         <el-input
                 type="textarea"
-                :rows="10"
+                :autosize="{ minRows: 6, maxRows: 30}"
                 placeholder="请输入内容"
                 v-model="articleContent">
         </el-input>
-
+        <p class="at-index-choice">
+            <label>是否展示到首页</label>
+            <el-switch
+                    v-model="atIndex"
+                    active-color="#13ce66"
+                    inactive-color="#ff4949">
+            </el-switch>
+        </p>
         <el-button type="primary" plain>立即创建</el-button>
     </div>
 </template>
@@ -27,12 +34,16 @@
 <script>
     export default {
         name: "create",
-        data(){
-            return{
-                articleTitle:'',
-                articleSummary:'',
-                articleContent:'',
+        data() {
+            return {
+                articleTitle: '',
+                articleSummary: '',
+                articleContent: '',
+                atIndex: false
             }
+        },
+        computed:{
+
         }
     }
 </script>
@@ -42,6 +53,7 @@
 
     #edit > *
         margin 5px 0
+
     #edit
         display grid
         justify-content center
@@ -52,4 +64,6 @@
             width 600px
         p.msg
             color $themeWarningTextColor
+        p.at-index-choice
+            margin 15px 0
 </style>

@@ -47,8 +47,10 @@ header.login
     border 1px solid green
     flex 1
     padding 0 0 0 15px
-    color #ffffff
     cursor pointer
+    a
+      color #ffffff
+
   i
     cursor pointer
 

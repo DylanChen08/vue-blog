@@ -2,7 +2,9 @@
     <header :class="{'login':isLogin,'no-login':!isLogin}">
         <!--未登录状态header-->
         <template v-if="!isLogin">
-            <h1>Blog Sharer</h1>
+            <h1>
+                <router-link to="/">Blog Sharer</router-link>
+            </h1>
             <span>分享精品博客</span>
             <section>
                 <el-button plain><router-link to="/pages/login">立即登录</router-link></el-button>
@@ -11,8 +13,10 @@
         </template>
         <!--登录状态header-->
         <template v-if="isLogin">
-            <h1>let`s share</h1>
-            <i class="el-icon-plus"></i>
+            <h1>
+                <router-link to="/">Blog Sharer</router-link>
+            </h1>
+            <router-link to="/pages/create"><i class="el-icon-plus"></i></router-link>
             <div class="user-avatar">
                 <img class="avatar" :src="user.avatar" :alt="user.username" :title="user.username"/>
                 <ul>
