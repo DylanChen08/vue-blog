@@ -95,6 +95,8 @@ header.no-login
   h1
     margin 10px 0
     color #ffffff
+    a
+      color #ffffff
   span
     margin 5px 0 10px
     color $themeTextColor
