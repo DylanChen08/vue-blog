@@ -3,7 +3,7 @@
         <h1>创建文章</h1>
         <h3>文章标题</h3>
         <el-input v-model="articleTitle" placeholder="请输入文章标题"></el-input>
-        <p class="msg">限30个字</p>
+        <p class="msg">限{{lengthOfTitle}}/30个字</p>
         <h3>内容简介</h3>
         <el-input
                 type="textarea"
@@ -11,7 +11,7 @@
                 placeholder="请输入内容简介"
                 v-model="articleSummary">
         </el-input>
-        <p class="msg">限30个字</p>
+        <p class="msg">限{{lengthOfSummary}}/30个字</p>
         <h3>文章内容</h3>
         <el-input
                 type="textarea"
@@ -32,6 +32,8 @@
 </template>
 
 <script>
+    import {Message} from 'element-ui'
+
     export default {
         name: "create",
         data() {
@@ -42,8 +44,21 @@
                 atIndex: false
             }
         },
-        computed:{
-
+        computed: {
+            lengthOfTitle() {
+                let that = this
+                if (that.articleTitle.length > 30) {
+                    Message.error("超过数字限制")
+                }
+                return this.articleTitle.length
+            },
+            lengthOfSummary() {
+                let that = this
+                if (that.articleSummary.length > 30) {
+                    Message.error("超过数字限制")
+                }
+                return this.articleSummary.length
+            }
         }
     }
 </script>
