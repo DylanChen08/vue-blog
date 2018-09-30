@@ -27,12 +27,13 @@
                     inactive-color="#ff4949">
             </el-switch>
         </p>
-        <el-button type="primary" plain>立即创建</el-button>
+        <el-button type="primary" plain @click="onCreate">立即创建</el-button>
     </div>
 </template>
 
 <script>
     import {Message} from 'element-ui'
+    import blog from "../../api/blog"
 
     export default {
         name: "create",
@@ -58,6 +59,19 @@
                     Message.error("超过数字限制")
                 }
                 return this.articleSummary.length
+            }
+        },
+        methods: {
+            onCreate() {
+                blog.createBlog({
+                    title: this.articleTitle,
+                    content: this.articleContent,
+                    description: this.articleSummary,
+                    atIndex: this.atIndex
+                }).then(res => {
+                    this.$message.success(res.msg)
+                    this.$router.push({path: `{/pages/blog-details/${res.data.id}`})
+                })
             }
         }
     }
