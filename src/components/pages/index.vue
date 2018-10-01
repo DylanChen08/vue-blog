@@ -76,7 +76,6 @@
             figure.avatar
                 grid-column 1
                 grid-row 1 / span2
-                /*border 1px solid green*/
                 img
                     border-radius 50%
                 figcaption
@@ -89,7 +88,6 @@
             h3
                 grid-column 2
                 grid-row 1
-            /*border 1px solid red*/
             p
                 grid-column 2
                 grid-row 2
@@ -98,7 +96,6 @@
                 font-size 13px
                 color #999
 
-    /*border 1px solid yellow*/
 
     .pagination
         margin 20px 0

@@ -64,18 +64,14 @@
                 width 60px
                 height 60px
                 border-radius 50%
-                border 1px solid red
             h3
                 grid-column 2
                 grid-row 1
-                border 1px solid red
             p
                 grid-column 2
                 grid-row 2
-                border 1px solid red
 
         section.article-area
             padding 30px 10px
-            border 1px solid red
 
 </style>

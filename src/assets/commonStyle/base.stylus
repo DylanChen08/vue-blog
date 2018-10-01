@@ -30,21 +30,18 @@ html, body, #app
   grid-template-areas "header header header"\
   ".      main  ."\
   "footer footer footer"
-  border 1px solid red
 }
 
 /*登录之后header的样式*/
 header.login
   grid-area header
   padding 0 12%
-  border 1px solid red
   height 100px
   width 100%
   display flex
   align-items center
   background $themeColor
   h1
-    border 1px solid green
     flex 1
     padding 0 0 0 15px
     cursor pointer
@@ -86,7 +83,6 @@ header.login
 
 header.no-login
   grid-area header
-  border 1px solid red
   display flex
   flex-direction column
   justify-content center
@@ -105,11 +101,9 @@ header.no-login
 
 #main
   grid-area main
-  border 1px solid green
 
 #footer
   grid-area footer
-  border 1px solid red
   display flex
   justify-content center
   align-items center
