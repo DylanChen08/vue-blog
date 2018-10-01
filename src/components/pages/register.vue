@@ -31,7 +31,7 @@
             ...mapActions(['register']),
             onRegister() {
                 this.register({username: this.username, password: this.password}).then(() => {
-                    this.$router.push({path: "/"})
+                    this.$router.push({path: "/pages/index"})
                 }).catch(() => {
                 })
             }

@@ -1,9 +1,9 @@
 <template>
     <div id="details">
-        <section class="userInfo">
-            <img class="avatar" :src="userInfo.avatar" :alt="userInfo.username"/>
+        <section class="user">
+            <img class="avatar" :src="user.avatar" :alt="user.username"/>
             <h3>{{title}}</h3>
-            <p>发布者{{userInfo.username}}发布于xxxx</p>
+            <p><router-link :to="`/pages/user/${user.id}`">{{user.username}}</router-link></p>
         </section>
         <!--将markdown渲染为html输出的结果在这里-->
         <section class="article-area" v-html="markedConvert"></section>
@@ -22,7 +22,7 @@
             return {
                 title: "",
                 rawContent: "",
-                userInfo: {},
+                user: {},
                 createAt: ""
             }
         },
@@ -33,7 +33,7 @@
                 console.log(res)
                 this.title = res.data.title
                 this.rawContent = res.data.content
-                this.userInfo = res.data.user
+                this.user = res.data.user
                 this.createAt = res.data.user.createAt
             }).catch(() => {
 
@@ -51,9 +51,9 @@
 
 <style lang="stylus" scoped>
     #details
-        section.userInfo > *
+        section.user > *
             padding 5px
-        section.userInfo
+        section.user
             display grid
             grid auto auto / 80px 1fr
             padding 30px 0

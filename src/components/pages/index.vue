@@ -5,10 +5,7 @@
             <router-link class="item-wrapper" v-for="item in blogs" :to="`/pages/blog-details/${item.id}`"
                          v-bind:key="item.id">
                 <figure class="avatar">
-
                     <img :src="item.user.avatar" :alt="item.user.uername"/>
-                    <img  src="xxx.png" />
-
                     <figcaption>
                         <span>{{item.user.username}}</span>
                     </figcaption>
