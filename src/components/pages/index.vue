@@ -12,6 +12,16 @@
                 <p>{{item.description}}</p>
             </router-link>
         </section>
+        <section class="pagination">
+            <el-pagination
+                    background
+                    layout="prev, pager, next"
+                    @current-change="onPageChange"
+                    :total="total"
+                    :current-page="page"
+            >
+            </el-pagination>
+        </section>
     </div>
 </template>
 
@@ -36,7 +46,18 @@
                 this.page = res.page
             })
         },
-        methods: {}
+        methods: {
+            onPageChange(newPage) {
+                console.log("newPage")
+                console.log(newPage)
+                blog.getIndexBlogs({page: newPage}).then(res => {
+                    this.blogs = res.data
+                    this.total = res.total
+                    this.page = res.page
+                    this.$router.push({path: "/pages/index", query: {page: newPage}})
+                })
+            }
+        }
     }
 </script>
 
@@ -64,11 +85,14 @@
             h3
                 grid-column 2
                 grid-row 1
-                /*border 1px solid red*/
+            /*border 1px solid red*/
             p
                 grid-column 2
                 grid-row 2
-                /*border 1px solid yellow*/
 
+    /*border 1px solid yellow*/
 
+    .pagination
+        margin 20px 0
+        text-align center
 </style>
