@@ -11,5 +11,6 @@
 </script>
 
 <style lang="stylus" scoped>
-
+    #footer
+        margin-top: 25px;
 </style>

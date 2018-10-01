@@ -14,6 +14,7 @@
     import marked from "marked"
 
     console.dir(marked)
+
     import blog from "../../api/blog"
 
     export default {
@@ -29,7 +30,6 @@
         created() {
             let blogId = this.$route.params.blogId
             blog.getDetail({blogId: blogId}).then(res => {
-                console.log(226336)
                 console.log(res)
                 this.title = res.data.title
                 this.rawContent = res.data.content
