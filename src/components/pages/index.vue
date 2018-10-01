@@ -12,7 +12,7 @@
                 </figure>
                 <h3>{{item.title}}</h3>
                 <p>{{item.description}}</p>
-                <span class="time-area">{{item.user.updatedAt.slice(0,10)+" "+item.user.updatedAt.slice(11,19)}}</span>
+                <span class="time-area">{{friendlyDate(item.user.updatedAt)}}</span>
             </router-link>
         </section>
         <section class="pagination">

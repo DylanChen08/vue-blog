@@ -4,13 +4,16 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import router from './router'
 import store from './store/index'
+import utils from './helpers/utils'
 import './plugins/element.js'
 
 Vue.config.productionTip = false
 Vue.use(ElementUI);
+Vue.use(utils);
 
 new Vue({
     router,
     store,
+    utils,
     render: h => h(App)
 }).$mount('#app')
