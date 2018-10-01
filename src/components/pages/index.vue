@@ -1,17 +1,21 @@
 <template>
     <div id="index">
         <section class="blog-post">
-            <router-link class="item-wrapper" to="`/pages/blog-details/${item.id}`" v-for="item in blogs"
+            <!--注意,用ES6模板插值法插入值的时候,要绑定to的值为变量-->
+            <router-link class="item-wrapper" v-for="item in blogs" :to="`/pages/blog-details/${item.id}`"
                          v-bind:key="item.id">
                 <figure class="avatar">
+
                     <img :src="item.user.avatar" :alt="item.user.uername"/>
+                    <img  src="xxx.png" />
+
                     <figcaption>
                         <span>{{item.user.username}}</span>
                     </figcaption>
                 </figure>
                 <h3>{{item.title}}</h3>
                 <p>{{item.description}}</p>
-                <span class="time-area">{{item.updatedAt.slice(0,10)+" "+item.updatedAt.slice(11,19)}}</span>
+                <span class="time-area">{{item.user.updatedAt.slice(0,10)+" "+item.user.updatedAt.slice(11,19)}}</span>
             </router-link>
         </section>
         <section class="pagination">
@@ -28,7 +32,6 @@
 </template>
 
 <script>
-    console.log(1)
     import blog from "../../api/blog"
 
     export default {

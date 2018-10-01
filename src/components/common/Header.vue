@@ -3,7 +3,7 @@
         <!--未登录状态header-->
         <template v-if="!isLogin">
             <h1>
-                <router-link to="/">Blog Sharer</router-link>
+                <router-link to="/pages/index">Blog Sharer</router-link>
             </h1>
             <span>分享精品博客</span>
             <section>
@@ -14,7 +14,7 @@
         <!--登录状态header-->
         <template v-if="isLogin">
             <h1>
-                <router-link to="/">Blog Sharer</router-link>
+                <router-link to="/pages/index">Blog Sharer</router-link>
             </h1>
             <router-link to="/pages/create"><i class="el-icon-plus"></i></router-link>
             <div class="user-avatar">
