@@ -1,15 +1,17 @@
 <template>
     <div id="index">
         <section class="blog-post">
-            <router-link class="item-wrapper" to="" v-for="item in blogs" v-bind:key="item.id">
+            <router-link class="item-wrapper" to="`/pages/blog-details/${item.id}`" v-for="item in blogs"
+                         v-bind:key="item.id">
                 <figure class="avatar">
-                    <img :src="item.user.avatar"/>
+                    <img :src="item.user.avatar" :alt="item.user.uername"/>
                     <figcaption>
                         <span>{{item.user.username}}</span>
                     </figcaption>
                 </figure>
                 <h3>{{item.title}}</h3>
                 <p>{{item.description}}</p>
+                <span class="time-area">{{item.updatedAt.slice(0,10)+" "+item.updatedAt.slice(11,19)}}</span>
             </router-link>
         </section>
         <section class="pagination">
@@ -39,6 +41,7 @@
             }
         },
         created() {
+            this.page = parseInt(this.$route.query.page) || 1
             blog.getIndexBlogs({page: this.page}).then(res => {
                 console.log(res)
                 this.blogs = res.data
@@ -54,6 +57,7 @@
                     this.blogs = res.data
                     this.total = res.total
                     this.page = res.page
+                    //把当前的页数放进url,通过query传递当前的页码的值
                     this.$router.push({path: "/pages/index", query: {page: newPage}})
                 })
             }
@@ -89,6 +93,10 @@
             p
                 grid-column 2
                 grid-row 2
+
+            .time-area
+                font-size 13px
+                color #999
 
     /*border 1px solid yellow*/
 
