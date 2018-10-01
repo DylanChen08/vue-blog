@@ -35,51 +35,50 @@
     import blog from "../../api/blog"
 
     export default {
-        name: "user",
-        data: function () {
+        data () {
             return {
                 blogs: [],
                 user: {},
                 page: 1,
-                total: null
-
+                total: 0
             }
         },
+
         created() {
-            this.useId = this.$route.params.userId
+            this.userId = this.$route.params.userId
             this.page = this.$route.query.page || 1
-            blog.getBlogsByUserId(this.useId, {page: this.page}).then(res => {
-                console.log(6603)
-                console.log(typeof res.data[0].createdAt)
-                console.log(res)
-                this.blogs = res.data
-                this.page = res.page
-                this.total = res.total
-                if (res.data.length > 0) {
-                    this.user = res.data[0].user
-                }
-            })
-        },
-        methods: {
-            onPageChange(newPage) {
-                blog.getBlogsByUserId(this.useId, {page: newPage, atIndex: ''}).then(res => {
+            blog.getBlogsByUserId(this.userId, { page: this.page })
+                .then(res => {
                     console.log(res)
-                    this.blogs = res.data
                     this.page = res.page
                     this.total = res.total
-                    this.$route.push({path: `/user/${this.userId}`, query: {page: newPage}})
+                    this.blogs = res.data
+                    if(res.data.length > 0) {
+                        this.user = res.data[0].user
+                    }
+                })
+        },
+
+        methods: {
+            onPageChange(newPage) {
+                blog.getBlogsByUserId(this.userId, { page: newPage }).then(res => {
+                    console.log(res)
+                    this.blogs = res.data
+                    this.total = res.total
+                    this.page = res.page
+                    this.$router.push({ path: `/pages/user/${this.userId}`, query: { page: newPage}})
                 })
             },
+
             splitDate(dataStr) {
-                let dataObj = typeof dataStr === 'object' ? dataStr : new Date(dataStr)
+                let dateObj = typeof dataStr === 'object' ? dataStr : new Date(dataStr)
                 return {
-                    date: dataObj.getDate(),
-                    month: dataObj.getMonth() + 1,
-                    year: dataObj.getFullYear()
+                    date: dateObj.getDate(),
+                    month: dateObj.getMonth() + 1,
+                    year: dateObj.getFullYear()
                 }
             }
         }
-
     }
 </script>
 
