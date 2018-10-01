@@ -7,8 +7,12 @@
             </h1>
             <span>分享精品博客</span>
             <section>
-                <el-button plain><router-link to="/pages/login">立即登录</router-link></el-button>
-                <el-button plain><router-link to="/pages/register">注册账号</router-link></el-button>
+                <el-button plain>
+                    <router-link to="/pages/login">立即登录</router-link>
+                </el-button>
+                <el-button plain>
+                    <router-link to="/pages/register">注册账号</router-link>
+                </el-button>
             </section>
         </template>
         <!--登录状态header-->
@@ -21,11 +25,12 @@
                 <img class="avatar" :src="user.avatar" :alt="user.username" :title="user.username"/>
                 <ul>
                     <li>
-                        <router-link to="/pages/my-profiles">我的</router-link>
+                        <router-link :to="`/pages/my-profiles/${user.id}`">我的</router-link>
                     </li>
                     <li><a @click="onLogOut">注销</a></li>
                 </ul>
             </div>
+
 
         </template>
     </header>
@@ -50,6 +55,7 @@
                 'user'
             ]),
 
+
         },
 
         created() {
@@ -60,7 +66,7 @@
                 'checkLogin',
                 'logout'
             ]),
-            onLogOut(){
+            onLogOut() {
                 this.logout()
             }
 
