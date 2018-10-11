@@ -1,5 +1,5 @@
 # vue-blog
-点我 >> [预览传送门](https://easecy.github.io/vue-blog/)
+点我 >> [预览传送门](https://easecy.github.io/vue-blog/publish/index.html)
 
 ## 如何开始？
 
