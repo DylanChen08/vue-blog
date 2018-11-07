@@ -31,6 +31,7 @@
 <script>
     import blog from "../../api/blog"
 
+
     export default {
         name: "index",
         data: function () {
@@ -95,7 +96,6 @@
             .time-area
                 font-size 13px
                 color #999
-
 
     .pagination
         margin 20px 0

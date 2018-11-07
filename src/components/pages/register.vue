@@ -33,6 +33,7 @@
                 this.register({username: this.username, password: this.password}).then(() => {
                     this.$router.push({path: "/pages/index"})
                 }).catch(() => {
+
                 })
             }
 

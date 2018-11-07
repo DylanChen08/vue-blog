@@ -29,8 +29,11 @@
         },
         created() {
             let blogId = this.$route.params.blogId
+            console.log('blogID')
+            console.log(blogId)
             blog.getDetail({blogId: blogId}).then(res => {
-                // console.log(res)
+                console.log('res')
+                console.log(res)
                 this.title = res.data.title
                 this.rawContent = res.data.content
                 this.user = res.data.user
