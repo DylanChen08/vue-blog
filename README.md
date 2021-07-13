@@ -56,7 +56,7 @@
 
 * Vue 2.x + Vue Router + Vuex
 * ElementUI
-* ES6 + Promise
+* ES6 + Promise + Axios
 
 <!-- GETTING STARTED -->
 
