@@ -94,7 +94,7 @@ yarn test:unit
 
 DylanChen - easetreychen@gmail.com
 
-Github 地址: [https://github.com/DylanChen08/morney](https://github.com/DylanChen08/morney)
+Github 地址: [https://github.com/DylanChen08/vue-blog](https://github.com/DylanChen08/vue-blog)
 
 
 
