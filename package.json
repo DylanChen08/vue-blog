@@ -22,7 +22,7 @@
     "@vue/cli-service": "^3.12.1",
     "@vue/test-utils": "^1.2.1",
     "chai": "^4.3.4",
-    "marked": "^0.5.2",
+    "marked": "^0.7.0",
     "stylus": "^0.54.8",
     "stylus-loader": "^3.0.2",
     "vue-cli-plugin-element": "^1.0.1",
