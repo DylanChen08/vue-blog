@@ -1,144 +1,152 @@
 <template>
-    <div id="user">
-        <section class="user-info">
-            <img :src="user.avatar" :alt="user.username" class="avatar">
-            <h3>{{user.username}}</h3>
-        </section>
-        <section>
-            <router-link v-for="item in blogs" v-bind:key="item.id" :to="`/pages/blog-details/${item.id}`">
-                <div class="item">
-                    <div class="date">
+  <div id="user">
+    <section class="user-info">
+      <img :src="user.avatar" :alt="user.username" class="avatar">
+      <h3>{{ user.username }}</h3>
+    </section>
+    <section>
+      <router-link v-for="item in blogs" v-bind:key="item.id" :to="`/pages/blog-details/${item.id}`">
+        <div class="item">
+          <div class="date">
 
-                        <span class="day">{{splitDate(item.createdAt).date}}</span>
-                        <span class="month">{{splitDate(item.createdAt).month}}月</span>
-                        <span class="year">{{splitDate(item.createdAt).year}}</span>
-                    </div>
-                    <h3>{{item.title}}</h3>
-                    <p>{{item.description}}</p>
-                </div>
-            </router-link>
-        </section>
-        <section class="pagination">
-            <el-pagination
-                    background
-                    layout="prev, pager, next"
-                    @current-change="onPageChange"
-                    :total="total"
-                    :current-page="page"
-            >
-            </el-pagination>
-        </section>
-    </div>
+            <span class="day">{{ splitDate(item.createdAt).date }}</span>
+            <span class="month">{{ splitDate(item.createdAt).month }}月</span>
+            <span class="year">{{ splitDate(item.createdAt).year }}</span>
+          </div>
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.description }}</p>
+        </div>
+      </router-link>
+    </section>
+    <section class="pagination">
+      <el-pagination
+          background
+          layout="prev, pager, next"
+          @current-change="onPageChange"
+          :total="total"
+          :current-page="page"
+      >
+      </el-pagination>
+    </section>
+  </div>
 </template>
 
 <script>
-    import blog from "../../api/blog"
+import blog from "../../api/blog"
 
-    export default {
-        data () {
-            return {
-                blogs: [],
-                user: {},
-                page: 1,
-                total: 0
-            }
-        },
-
-        created() {
-            this.userId = this.$route.params.userId
-            this.page = this.$route.query.page || 1
-            blog.getBlogsByUserId(this.userId, { page: this.page })
-                .then(res => {
-                    console.log(res)
-                    this.page = res.page
-                    this.total = res.total
-                    this.blogs = res.data
-                    if(res.data.length > 0) {
-                        this.user = res.data[0].user
-                    }
-                })
-        },
-
-        methods: {
-            onPageChange(newPage) {
-                blog.getBlogsByUserId(this.userId, { page: newPage }).then(res => {
-                    console.log(res)
-                    this.blogs = res.data
-                    this.total = res.total
-                    this.page = res.page
-                    this.$router.push({ path: `/pages/user/${this.userId}`, query: { page: newPage}})
-                })
-            },
-
-            splitDate(dataStr) {
-                let dateObj = typeof dataStr === 'object' ? dataStr : new Date(dataStr)
-                return {
-                    date: dateObj.getDate(),
-                    month: dateObj.getMonth() + 1,
-                    year: dateObj.getFullYear()
-                }
-            }
-        }
+export default {
+  data() {
+    return {
+      blogs: [],
+      user: {},
+      page: 1,
+      total: 0
     }
+  },
+
+  created() {
+    this.userId = this.$route.params.userId
+    this.page = this.$route.query.page || 1
+    blog.getBlogsByUserId(this.userId, {page: this.page})
+        .then(res => {
+          console.log(res)
+          this.page = res.page
+          this.total = res.total
+          this.blogs = res.data
+          if (res.data.length > 0) {
+            this.user = res.data[0].user
+          }
+        })
+  },
+
+  methods: {
+    onPageChange(newPage) {
+      blog.getBlogsByUserId(this.userId, {page: newPage}).then(res => {
+        console.log(res)
+        this.blogs = res.data
+        this.total = res.total
+        this.page = res.page
+        this.$router.push({path: `/pages/user/${this.userId}`, query: {page: newPage}})
+      })
+    },
+
+    splitDate(dataStr) {
+      let dateObj = typeof dataStr === 'object' ? dataStr : new Date(dataStr)
+      return {
+        date: dateObj.getDate(),
+        month: dateObj.getMonth() + 1,
+        year: dateObj.getFullYear()
+      }
+    }
+  }
+}
 </script>
 
 <style lang="stylus" scoped>
-    @import "../../assets/commonStyle/base.stylus"
-    #user > .user-info,
-    #my-page > .user-info
-        display grid
-        grid auto auto / 80px 1fr
-        padding 15px
-        border-bottom 1px solid #ddd
-        img.avatar
-            grid-row 1 / span2
-            grid-column 1
-            width 60px
-            height 60px
-            border-radius 50%
-        h3
-            grid-row 2
-            grid-column 2
+@import "../../assets/commonStyle/base.stylus"
+#user > .user-info,
+#my-page > .user-info
+  display grid
+  grid auto auto / 80px 1fr
+  padding 15px
+  border-bottom 1px solid #ddd
 
-    #user .item,
-    #my-page .user-info
-        display grid
-        grid auto auto auto / 80px 1fr
-        margin 20px 0
-        .date
-            grid-row 1 / span3
-            grid-column 1
-            justify-self center
-            text-align center
-        .date > span
-            color #999
-            display block
-        .date .day
-            font-size 40px
-        .month, .years
-            font-size 15px
-        h3
-            padding 5px
-            grid-column 2
-            grid-row 1
-        p
-            padding 5px
-            grid-column 2
-            grid-row 2
+  img.avatar
+    grid-row 1 / span2
+    grid-column 1
+    width 60px
+    height 60px
+    border-radius 50%
 
-    #user > .pagination
-        text-align center
+  h3
+    grid-row 2
+    grid-column 2
 
-    .actions
-        grid-column 2
-        grid-row 3
-        font-size 12px
-        margin-top 10px
-        padding-left 5px
+#user .item,
+#my-page .user-info
+  display grid
+  grid auto auto auto / 80px 1fr
+  margin 20px 0
 
-        a
-            margin-right 5px
-            color $themeColor
+  .date
+    grid-row 1 / span3
+    grid-column 1
+    justify-self center
+    text-align center
+
+  .date > span
+    color #999
+    display block
+
+  .date .day
+    font-size 40px
+
+  .month, .years
+    font-size 15px
+
+  h3
+    padding 5px
+    grid-column 2
+    grid-row 1
+
+  p
+    padding 5px
+    grid-column 2
+    grid-row 2
+
+#user > .pagination
+  text-align center
+
+.actions
+  grid-column 2
+  grid-row 3
+  font-size 12px
+  margin-top 10px
+  padding-left 5px
+
+  a
+    margin-right 5px
+    color $themeColor
 
 
 </style>
