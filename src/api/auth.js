@@ -19,6 +19,7 @@ export default{
         return request(URL.LOGIN,'POST',{username,password})
     },
     logOut(){
+        localStorage.removeItem('token')
         return request(URL.LOGOUT)
     },
     getInfo(){

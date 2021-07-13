@@ -1,40 +1,39 @@
 import axios from 'axios'
-import {Message} from 'element-ui'
+import { Message } from 'element-ui'
 
-axios.defaults.baseURL = 'http://blog-server.hunger-valley.com';
-axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-axios.defaults.withCredentials = true
-/*
-* 对axios的request进行封装，使用更加方便
-* 传入三个参数:url,请求类型,请求的数据。
-* 可以直接在控制台模拟请求
-*
-* */
-export default function request(url, type = "GET", data = {}) {
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
+axios.defaults.baseURL = '//blog-server.hunger-valley.com'
+
+
+export default function request(url, type = 'GET', data = {}) {
     return new Promise((resolve, reject) => {
-        let options = {
-            url:url,
-            method: type
+        let option = {
+            url,
+            method: type,
         }
-        if (type.toLowerCase() === "get") {
-            options.params = data
-        } else {
-            options.data = data
+        if(type.toLowerCase() === 'get') {
+            option.params = data
+        }else {
+            option.data = data
+        }
+        if(localStorage.token) {
+            axios.defaults.headers.common['Authorization']  = localStorage.token
         }
 
-        axios(options).then(res => {
-            console.log(res)
-            if (res.data.status === 'ok') {
+        axios(option).then(res => {
+            console.log(res.data)
+            if(res.data.status === 'ok') {
+                if(res.data.token) {
+                    localStorage.token = res.data.token
+                }
                 resolve(res.data)
-                Message.success(res.data.msg)
-            } else {
-                reject(res)
+            }else{
                 Message.error(res.data.msg)
+                reject(res.data)
             }
-        }).catch(() => {
-            console.log()
-            // Message.error("网络异常")
-            reject({msg: "网络异常"})
+        }).catch(err => {
+            Message.error('网络异常')
+            reject({ msg: '网络异常' })
         })
     })
 }
