@@ -1,6 +1,6 @@
 <template>
   <div id="footer">
-    <p>Power by Ease </p>
+    <p><a href="https://github.com/DylanChen08">@Dylan Chen</a></p>
   </div>
 </template>
 
